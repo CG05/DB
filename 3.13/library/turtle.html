@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="turtle — Turtle graphics" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.python.org/3/library/turtle.html" />
+<meta property="og:site_name" content="Python documentation" />
+<meta property="og:description" content="Source code: Lib/turtle.py Introduction: Turtle graphics is an implementation of the popular geometric drawing tools introduced in Logo, developed by Wally Feurzeig, Seymour Papert and Cynthia Solo..." />
+<meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
+<meta property="og:image:alt" content="Python documentation" />
+<meta name="description" content="Source code: Lib/turtle.py Introduction: Turtle graphics is an implementation of the popular geometric drawing tools introduced in Logo, developed by Wally Feurzeig, Seymour Papert and Cynthia Solo..." />
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
+
+    <title>turtle — Turtle graphics &#8212; Python 3.13.0b2 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?v=bb723527" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="../_static/documentation_options.js?v=58ee7cc9"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.13.0b2 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <link rel="next" title="cmd — Support for line-oriented command interpreters" href="cmd.html" />
+    <link rel="prev" title="Program Frameworks" href="frameworks.html" />
+    
+      <script defer data-domain="docs.python.org" src="https://plausible.io/js/script.js"></script>
+    
+    <link rel="canonical" href="https://docs.python.org/3/library/turtle.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="stylesheet" href="../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script>
+            <script type="text/javascript" src="../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../_static/themetoggle.js"></script> 
+            <script type="text/javascript" src="../_static/rtd_switcher.js"></script>
+            <meta name="readthedocs-addons-api-version" content="1">
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../_static/py.svg" alt="Python logo"/>
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" />
+                <input type="submit" value="Go"/>
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="../contents.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">turtle</span></code> — Turtle graphics</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#get-started">Get started</a></li>
+<li><a class="reference internal" href="#tutorial">Tutorial</a><ul>
+<li><a class="reference internal" href="#starting-a-turtle-environment">Starting a turtle environment</a></li>
+<li><a class="reference internal" href="#basic-drawing">Basic drawing</a><ul>
+<li><a class="reference internal" href="#pen-control">Pen control</a></li>
+<li><a class="reference internal" href="#the-turtle-s-position">The turtle’s position</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#making-algorithmic-patterns">Making algorithmic patterns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#how-to">How to…</a><ul>
+<li><a class="reference internal" href="#get-started-as-quickly-as-possible">Get started as quickly as possible</a></li>
+<li><a class="reference internal" href="#use-the-turtle-module-namespace">Use the <code class="docutils literal notranslate"><span class="pre">turtle</span></code> module namespace</a></li>
+<li><a class="reference internal" href="#use-turtle-graphics-in-a-script">Use turtle graphics in a script</a></li>
+<li><a class="reference internal" href="#use-object-oriented-turtle-graphics">Use object-oriented turtle graphics</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#turtle-graphics-reference">Turtle graphics reference</a><ul>
+<li><a class="reference internal" href="#turtle-methods">Turtle methods</a></li>
+<li><a class="reference internal" href="#methods-of-turtlescreen-screen">Methods of TurtleScreen/Screen</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methods-of-rawturtle-turtle-and-corresponding-functions">Methods of RawTurtle/Turtle and corresponding functions</a><ul>
+<li><a class="reference internal" href="#turtle-motion">Turtle motion</a></li>
+<li><a class="reference internal" href="#tell-turtle-s-state">Tell Turtle’s state</a></li>
+<li><a class="reference internal" href="#settings-for-measurement">Settings for measurement</a></li>
+<li><a class="reference internal" href="#id1">Pen control</a><ul>
+<li><a class="reference internal" href="#drawing-state">Drawing state</a></li>
+<li><a class="reference internal" href="#color-control">Color control</a></li>
+<li><a class="reference internal" href="#filling">Filling</a></li>
+<li><a class="reference internal" href="#more-drawing-control">More drawing control</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#turtle-state">Turtle state</a><ul>
+<li><a class="reference internal" href="#visibility">Visibility</a></li>
+<li><a class="reference internal" href="#appearance">Appearance</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-events">Using events</a></li>
+<li><a class="reference internal" href="#special-turtle-methods">Special Turtle methods</a></li>
+<li><a class="reference internal" href="#compound-shapes">Compound shapes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methods-of-turtlescreen-screen-and-corresponding-functions">Methods of TurtleScreen/Screen and corresponding functions</a><ul>
+<li><a class="reference internal" href="#window-control">Window control</a></li>
+<li><a class="reference internal" href="#animation-control">Animation control</a></li>
+<li><a class="reference internal" href="#using-screen-events">Using screen events</a></li>
+<li><a class="reference internal" href="#input-methods">Input methods</a></li>
+<li><a class="reference internal" href="#settings-and-special-methods">Settings and special methods</a></li>
+<li><a class="reference internal" href="#methods-specific-to-screen-not-inherited-from-turtlescreen">Methods specific to Screen, not inherited from TurtleScreen</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#public-classes">Public classes</a></li>
+<li><a class="reference internal" href="#explanation">Explanation</a></li>
+<li><a class="reference internal" href="#help-and-configuration">Help and configuration</a><ul>
+<li><a class="reference internal" href="#how-to-use-help">How to use help</a></li>
+<li><a class="reference internal" href="#translation-of-docstrings-into-different-languages">Translation of docstrings into different languages</a></li>
+<li><a class="reference internal" href="#how-to-configure-screen-and-turtles">How to configure Screen and Turtles</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-turtledemo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">turtledemo</span></code> — Demo scripts</a></li>
+<li><a class="reference internal" href="#changes-since-python-2-6">Changes since Python 2.6</a></li>
+<li><a class="reference internal" href="#changes-since-python-3-0">Changes since Python 3.0</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="frameworks.html"
+                          title="previous chapter">Program Frameworks</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="cmd.html"
+                          title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cmd</span></code> — Support for line-oriented command interpreters</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Report a Bug</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/main/Doc/library/turtle.rst"
+            rel="nofollow">Show Source
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cmd.html" title="cmd — Support for line-oriented command interpreters"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="frameworks.html" title="Program Frameworks"
+             accesskey="P">previous</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.13.0b2 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="frameworks.html" accesskey="U">Program Frameworks</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">turtle</span></code> — Turtle graphics</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-turtle">
+<span id="turtle-turtle-graphics"></span><h1><a class="reference internal" href="#module-turtle" title="turtle: An educational framework for simple graphics applications"><code class="xref py py-mod docutils literal notranslate"><span class="pre">turtle</span></code></a> — Turtle graphics<a class="headerlink" href="#module-turtle" title="Link to this heading">¶</a></h1>
+<p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.13/Lib/turtle.py">Lib/turtle.py</a></p>
+<hr class="docutils" />
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>Turtle graphics is an implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Turtle_(robot)">the popular geometric drawing tools
+introduced in Logo</a>, developed by Wally Feurzeig, Seymour Papert and Cynthia Solomon
+in 1967.</p>
+</section>
+<section id="get-started">
+<h2>Get started<a class="headerlink" href="#get-started" title="Link to this heading">¶</a></h2>
+<p>Imagine a robotic turtle starting at (0, 0) in the x-y plane.  After an <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">turtle</span></code>, give it the
+command <code class="docutils literal notranslate"><span class="pre">turtle.forward(15)</span></code>, and it moves (on-screen!) 15 pixels in the
+direction it is facing, drawing a line as it moves.  Give it the command
+<code class="docutils literal notranslate"><span class="pre">turtle.right(25)</span></code>, and it rotates in-place 25 degrees clockwise.</p>
+<aside class="sidebar">
+<p class="sidebar-title">Turtle star</p>
+<p>Turtle can draw intricate shapes using programs that repeat simple
+moves.</p>
+<img alt="../_images/turtle-star.png" class="align-center" src="../_images/turtle-star.png" />
+</aside>
+<p>In Python, turtle graphics provides a representation of a physical “turtle”
+(a little robot with a pen) that draws on a sheet of paper on the floor.</p>
+<p>It’s an effective and well-proven way for learners to encounter
+programming concepts and interaction with software, as it provides instant,
+visible feedback. It also provides convenient access to graphical output
+in general.</p>
+<p>Turtle drawing was originally created as an educational tool, to be used by
+teachers in the classroom. For the programmer who needs to produce some
+graphical output it can be a way to do that without the overhead of
+introducing more complex or external libraries into their work.</p>
+</section>
+<section id="tutorial">
+<span id="turtle-tutorial"></span><h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">¶</a></h2>
+<p>New users should start here. In this tutorial we’ll explore some of the
+basics of turtle drawing.</p>
+<section id="starting-a-turtle-environment">
+<h3>Starting a turtle environment<a class="headerlink" href="#starting-a-turtle-environment" title="Link to this heading">¶</a></h3>
+<p>In a Python shell, import all the objects of the <code class="docutils literal notranslate"><span class="pre">turtle</span></code> module:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>If you run into a <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'_tkinter'</span></code> error, you’ll have to
+install the <a class="reference internal" href="tkinter.html#module-tkinter" title="tkinter: Interface to Tcl/Tk for graphical user interfaces"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Tk</span> <span class="pre">interface</span> <span class="pre">package</span></code></a> on your system.</p>
+</section>
+<section id="basic-drawing">
+<h3>Basic drawing<a class="headerlink" href="#basic-drawing" title="Link to this heading">¶</a></h3>
+<p>Send the turtle forward 100 steps:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should see (most likely, in a new window on your display) a line
+drawn by the turtle, heading East. Change the direction of the turtle,
+so that it turns 120 degrees left (anti-clockwise):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s continue by drawing a triangle:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice how the turtle, represented by an arrow, points in different
+directions as you steer it.</p>
+<p>Experiment with those commands, and also with <code class="docutils literal notranslate"><span class="pre">backward()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">right()</span></code>.</p>
+<section id="pen-control">
+<h4>Pen control<a class="headerlink" href="#pen-control" title="Link to this heading">¶</a></h4>
+<p>Try changing the color - for example, <code class="docutils literal notranslate"><span class="pre">color('blue')</span></code> - and
+width of the line - for example, <code class="docutils literal notranslate"><span class="pre">width(3)</span></code> - and then drawing again.</p>
+<p>You can also move the turtle around without drawing, by lifting up the pen:
+<code class="docutils literal notranslate"><span class="pre">up()</span></code> before moving. To start drawing again, use <code class="docutils literal notranslate"><span class="pre">down()</span></code>.</p>
+</section>
+<section id="the-turtle-s-position">
+<h4>The turtle’s position<a class="headerlink" href="#the-turtle-s-position" title="Link to this heading">¶</a></h4>
+<p>Send your turtle back to its starting-point (useful if it has disappeared
+off-screen):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">home</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The home position is at the center of the turtle’s screen. If you ever need to
+know them, get the turtle’s x-y coordinates with:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Home is at <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>.</p>
+<p>And after a while, it will probably help to clear the window so we can start
+anew:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">clearscreen</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="making-algorithmic-patterns">
+<h3>Making algorithmic patterns<a class="headerlink" href="#making-algorithmic-patterns" title="Link to this heading">¶</a></h3>
+<p>Using loops, it’s possible to build up geometric patterns:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">steps</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">):</span>
+        <span class="n">color</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">forward</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
+        <span class="n">right</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>- which of course, are limited only by the imagination!</p>
+<p>Let’s draw the star shape at the top of this page. We want red lines,
+filled in with yellow:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">color</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">fillcolor</span><span class="p">(</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Just as <code class="docutils literal notranslate"><span class="pre">up()</span></code> and <code class="docutils literal notranslate"><span class="pre">down()</span></code> determine whether lines will be drawn,
+filling can be turned on and off:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">begin_fill</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Next we’ll create a loop:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">left</span><span class="p">(</span><span class="mi">170</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">pos</span><span class="p">())</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">abs(pos())</span> <span class="pre">&lt;</span> <span class="pre">1</span></code> is a good way to know when the turtle is back at its
+home position.</p>
+<p>Finally, complete the filling:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">end_fill</span><span class="p
